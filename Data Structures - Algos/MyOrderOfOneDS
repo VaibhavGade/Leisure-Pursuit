@@ -1,0 +1,63 @@
+class MyOrderOfOneDS
+{
+	vector<int> arr;
+	map<int, int> mp;
+
+public:
+	MyOrderOfOneDS()
+	{
+		arr.clear();
+		mp.clear();
+	}
+
+	void add(int i)
+	{
+		if (mp.end() != mp.find(i))
+			return;
+
+		int index = arr.size();
+		arr.push_back(i);
+		mp[i] = index;
+	}
+
+	void remove(int i)
+	{
+		map<int,int>::iterator it = mp.find(i);
+		if (mp.end() == it)
+			return;
+		mp[arr[arr.size() - 1]] = it->second;
+		swap(arr[it->second], arr[arr.size() - 1]);
+		arr.pop_back();
+		mp.erase(it);
+	}
+
+	int search(int i)
+	{
+		if (mp.end() != mp.find(i))
+			return mp.at(i);
+		return -1;
+	}
+
+	int getRandom()
+	{
+		srand(time(NULL));
+		int random_index = rand() % arr.size();
+		return arr.at(random_index);
+	}
+}
+
+void entry_point()
+{
+	MyOrderOfOneDS obj;
+	int arr[] = {11, 22, 33, 44, 55, 66, 11};
+	for (auto i : arr)
+	{
+		obj.add(i);
+	}
+
+	int i = obj.search(44);
+
+	obj.remove(44);
+
+	int j = obj.getRandom();
+}

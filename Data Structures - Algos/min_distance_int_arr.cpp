@@ -57,12 +57,24 @@ void entry_point()
 {
 	CMinDistanceBetweenTwoIntegersInArray min;
 	int arr[] = { 1, 2 };
-	int dist = -1;
-	bool ret = min.TrivialMethod(arr, 2, 1, 2, dist);
+	int dist0 = -1;
+	bool ret = min.TrivialMethod(arr, 2, 1, 2, dist0);
 	//int arr[] = { 6,4,3};
 	//int dist = -1;
 	//bool ret = min.TrivialMethod(arr, 3, 3, 6, dist);
 	//int arr[] = { 3, 5, 4, 2, 6, 5, 6, 6, 5, 4, 3, 9 };
 	//int dist = -1;
 	//bool ret = min.TrivialMethod(arr, 12, 3, 6, dist);
+	int arr4[] = { 1, 2 };
+	int dist = -1;
+	bool ret = min.TrickyMethod(arr4, 2, 1, 2, dist);
+	int arr1[] = { 6,4,3};
+	dist = -1;
+	ret = min.TrickyMethod(arr1, 3, 3, 6, dist);
+	int arr2[] = { 3, 4, 6, 3};
+	dist = -1;
+	ret = min.TrickyMethod(arr2, 4, 3, 6, dist);
+	int arr3[] = { 3, 6, 4, 3 };
+	dist = -1;
+	ret = min.TrickyMethod(arr3, 4, 3, 6, dist);	
 }

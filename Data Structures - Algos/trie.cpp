@@ -134,3 +134,11 @@ public:
 		delete_recur(&root, word, 0);
 	}
 }
+
+void entry_point()
+{
+	CTrie trie;
+	trie.insert("ABC");
+	bool bret = trie.search_recur_outer("ABCB");
+	trie._delete("ABC");
+}

@@ -53,6 +53,36 @@ public:
 	}
 };
 
+void findmaxmin(int arr[], int low, int high, int& max, int& min)
+{
+	if (low == high)
+	{
+		if (max < arr[low]) max = arr[low];
+		if (min > arr[low]) min = arr[low];
+		return;
+	}
+
+	if (low == high - 1)
+	{
+		if (arr[low] < arr[high])
+		{
+			if (min > arr[low]) min = arr[low];
+			if (max < arr[high]) max = arr[high];
+		}
+		else
+		{
+			if (min > arr[high]) min = arr[high];
+			if (max < arr[low]) max = arr[low];
+		}
+
+		return;
+	}
+
+	int mid = (low + high) / 2;
+	findmaxmin(arr, low, mid, max, min);
+	findmaxmin(arr, mid+1, high, max, min);
+}
+
 void entry_point()
 {
 	CMinDistanceBetweenTwoIntegersInArray min;
@@ -77,4 +107,8 @@ void entry_point()
 	int arr3[] = { 3, 6, 4, 3 };
 	dist = -1;
 	ret = min.TrickyMethod(arr3, 4, 3, 6, dist);	
+
+	int arr8[] = {4,3,2,1,5,6,7};
+	int min = INT_MAX, max = INT_MIN;
+	findmaxmin(arr8, 0, _countof(arr8)-1, max, min);	
 }
